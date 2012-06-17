@@ -25,7 +25,10 @@
 #   f3.rb
 #   f5.rb
 
-# needs file extension
+# Can break require/load statements below with "typos" to show how they work
+# and to show typical error messages.
+
+# load needs file extension
 # if not absolute path, searches paths in $:, if found, executes file 
 # can load and execute same file multiple times, no tracking
 load "f2.rb"
@@ -34,12 +37,12 @@ load "./lib/f5.rb"
 # Is there any good reason to use load?
 
 # require & require_relative are smart, will load each file once
-# $LOADED_FEATURES has paths of what has been loaded.
-# do not need file extension, .so, .o, .dll are being tried
-# same file, different extensions would require extensions
+# $LOADED_FEATURES has absolute paths of what has been loaded.
+# Do not need file extension, .so, .o, .dll are being tried
+# same file, different extensions would require extensions however
 require "./lib/f3"
 
-# require_relative is automatically relative to CWD where require needs
+# require_relative is automatically relative to CWD while require needs
 # ./ prepended
 #require "./f4"
 require_relative "f4"
@@ -73,8 +76,10 @@ puts $LOADED_FEATURES
 # Example: gem list --local, list all installed gems
 # Example: gem env, list settings, including GEM PATHS
 # Example: echo $GEM_HOME
-# Gem.path is a variable available in a Ruby program
+# Gem.path is a variable available in a Ruby program with same info
+# gems installed under a particular Ruby version using rvm are only
+# available when using that Ruby version unless installed separately.
 
 # To find location of the rvm gem: gem which rvm
-# gem which is searching both gem repositories and rub library directories
+# gem is searching both gem repositories and rub library directories
 
